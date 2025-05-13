@@ -28,8 +28,26 @@ public class NotificationBuilder {
     }
 
 
-    public static void buildNotificationThreadSafe(){
+    public static String buildNotificationThreadSafe(String recipient, String event){
+        // Step 1: Create a StringBuffer instance
+        StringBuffer safeMessage = new StringBuffer();
 
+        // Step 2: Append the greeting
+        safeMessage.append("Hi ").append(recipient).append(", ");
+
+        // Step 3: Append the event info
+        safeMessage.append("this is to inform you that your ").append(event).append(" has been completed.");
+
+        // Step 4: Generate and format the timestamp
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE-MMM-dd-yyyy HH:mm:ss");
+        String timestamp = now.format(formatter);
+
+        // Step 5: Append the timestamp
+        safeMessage.append("Generated at : ").append(timestamp);
+
+        // Step 6: Return the final message
+        return safeMessage.toString();
 
     }
 }
