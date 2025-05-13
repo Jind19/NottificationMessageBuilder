@@ -1,13 +1,12 @@
 package com.notification;
 
-/**
- * Hello world!
- *
- */
-public class App 
+import static com.notification.NotificationBuilder.buildNotificationSingleThreaded;
+
+public class App
 {
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+    public static void main( String[] args ){
+
+        String notification = buildNotificationSingleThreaded("Alice", "booking");
+        System.out.println(notification);
     }
 }
